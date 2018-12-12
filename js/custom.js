@@ -5,8 +5,13 @@
 [Table of Contents]
 
 1. Vars and Inits
+2. Set Header
+3. Init Menu
 4. Init Home SLider
 5. Init SVG
+6. Init Isotope
+7. Init Clients Slider
+8. Init Parallax
 
 
 ******************************/
@@ -21,8 +26,97 @@ $(document).ready(function()
 
 	*/
 
+	var header = $('.header');
+
+	setHeader();
+
+	$(window).on('resize', function()
+	{
+		setHeader();
+
+		setTimeout(function()
+		{
+			$(window).trigger('resize.px.parallax');
+		}, 375);
+	});
+
+	$(document).on('scroll', function()
+	{
+		setHeader();
+	});
+
+	initMenu();
 	initHomeSlider();
 	initSvg();
+	initIsotope();
+	initClientsSlider();
+	initParallax();
+
+	/* 
+
+	2. Set Header
+
+	*/
+
+	function setHeader()
+	{
+		if($(window).scrollTop() > 91)
+		{
+			header.addClass('scrolled');
+		}
+		else
+		{
+			header.removeClass('scrolled');
+		}
+	}
+
+	/* 
+
+	3. Init Menu
+
+	*/
+
+	function initMenu()
+	{
+		if($('.menu').length)
+		{
+			var header = $('.header');
+			var hOverlay = $('.header_overlay');
+			var menu = $('.menu');
+			var hamb = $('.hamburger');
+			var sup = $('.super_container_inner');
+			var close = $('.menu_close');
+			var overlay = $('.super_overlay');
+
+			hamb.on('click', function()
+			{
+				header.toggleClass('active');
+				sup.toggleClass('active');
+				menu.toggleClass('active');
+			});
+
+			close.on('click', function()
+			{
+				header.toggleClass('active');
+				sup.toggleClass('active');
+				menu.toggleClass('active');
+			});
+
+			overlay.on('click', function()
+			{
+				header.toggleClass('active');
+				sup.toggleClass('active');
+				menu.toggleClass('active');
+			});
+
+			hOverlay.on('click', function()
+			{
+				header.toggleClass('active');
+				sup.toggleClass('active');
+				menu.toggleClass('active');
+			});
+		}
+	}
 
 	/* 
 
@@ -118,6 +212,88 @@ $(document).ready(function()
 				}, 'xml');
 			});
 		}	
+	}
+
+	/* 
+
+	6. Init Isotope
+
+	*/
+
+	function initIsotope()
+	{
+		if($('.grid').length)
+		{
+			$('.grid').isotope(
+			{
+				itemSelector:'.grid-item',
+				layoutMode: 'fitRows'
+			});
+		}
+	}
+
+	/* 
+
+	7. Init Clients Slider
+
+	*/
+
+	function initClientsSlider()
+	{
+		if($('.clients_slider').length)
+		{
+			var clientsSlider = $('.clients_slider');
+			clientsSlider.owlCarousel(
+			{
+				items:5,
+				autoplay:true,
+				loop:true,
+				dots:false,
+				nav:false,
+				smartSpeed:1200,
+				margin:80,
+				responsive:
+				{
+					0:
+					{
+						items:1,
+						margin:0
+					},
+					576:
+					{
+						items:3,
+						margin:50
+					},
+					768:
+					{
+						items:4,
+						margin:50
+					},
+					992:
+					{
+						items:5,
+						margin:80
+					}
+				}
+			});
+		}
+	}
+
+	/* 
+
+	8. Init Parallax
+
+	*/
+
+	function initParallax()
+	{
+		if($('.parallax_background').length)
+		{
+			$('.parallax_background').parallax(
+			{
+				speed:0.8
+			});
+		}
 	}
 
 });
