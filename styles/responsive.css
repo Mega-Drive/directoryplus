@@ -164,6 +164,11 @@
 		left: auto;
 		width: 100%;
 	}
+	.grid-item
+	{
+		padding-left: 0;
+		padding-right: 0;
+	}
 	.grid_large
 	{
 		width: 100%;

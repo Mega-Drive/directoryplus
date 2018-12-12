@@ -820,6 +820,24 @@ section
 {
 	background: #e1ecf4;
 }
+.listing_icon
+{
+	position: absolute;
+	top: 15px;
+	left: 23px;
+	width: 52px;
+	height: 35px;
+	background: #49237d;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 35px;
+}
+.listing_icon a
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
 .listing_title_container
 {
 	padding-left: 23px;
